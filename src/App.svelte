@@ -1,4 +1,5 @@
 <script>
+  import BindingDemo from "./BindingDemo.svelte";
   import EventDemo from "./EventDemo.svelte";
   import Greeting from "./Greeting.svelte";
   import LoginButton from "./LoginButton.svelte";
@@ -39,4 +40,5 @@
   </p>
   <FrameWorksList />
   <EventDemo />
+  <BindingDemo />
 </main>
