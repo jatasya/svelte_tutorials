@@ -1,10 +1,5 @@
 <script>
-  import BindingDemo from "./BindingDemo.svelte";
-  import EventDemo from "./EventDemo.svelte";
-  import Greeting from "./Greeting.svelte";
-  import LoginButton from "./LoginButton.svelte";
-  import FrameWorksList from "./FrameWorksList.svelte";
-  export let name;
+  export let name = "Vikas";
 </script>
 
 <style>
@@ -30,15 +25,11 @@
 </style>
 
 <main>
-  <LoginButton />
   <h1>Hello {name}!</h1>
-  <Greeting first_name="Ashwini" last_name="Vikas" />
   <p>
     Visit the
     <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
     to learn how to build Svelte apps.
   </p>
-  <FrameWorksList />
-  <EventDemo />
-  <BindingDemo />
+
 </main>
