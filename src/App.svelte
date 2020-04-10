@@ -1,4 +1,5 @@
 <script>
+  import EventDemo from "./EventDemo.svelte";
   import Greeting from "./Greeting.svelte";
   import LoginButton from "./LoginButton.svelte";
   import FrameWorksList from "./FrameWorksList.svelte";
@@ -37,4 +38,5 @@
     to learn how to build Svelte apps.
   </p>
   <FrameWorksList />
+  <EventDemo />
 </main>
