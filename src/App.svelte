@@ -1,5 +1,6 @@
 <script>
   import Greeting from "./Greeting.svelte";
+  import LoginButton from "./LoginButton.svelte";
   export let name;
 </script>
 
@@ -26,6 +27,7 @@
 </style>
 
 <main>
+  <LoginButton />
   <h1>Hello {name}!</h1>
   <Greeting first_name="Ashwini" last_name="Vikas" />
   <p>
