@@ -1,6 +1,7 @@
 <script>
   import Greeting from "./Greeting.svelte";
   import LoginButton from "./LoginButton.svelte";
+  import FrameWorksList from "./FrameWorksList.svelte";
   export let name;
 </script>
 
@@ -35,4 +36,5 @@
     <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
     to learn how to build Svelte apps.
   </p>
+  <FrameWorksList />
 </main>

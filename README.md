@@ -93,3 +93,8 @@ surge public my-project.surge.sh
 ```
 # svelte_tutorials
 copy of svelte tutorials
+
+#svelte tutorial one branch master
+
+[1.svelte](https://www.youtube.com/watch?v=Bfi96LUebXo)
+
