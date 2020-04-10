@@ -27,7 +27,7 @@
 
 <main>
   <h1>Hello {name}!</h1>
-  <Greeting name="Ashwini" />
+  <Greeting first_name="Ashwini" last_name="Vikas" />
   <p>
     Visit the
     <a href="https://svelte.dev/tutorial">Svelte tutorial</a>

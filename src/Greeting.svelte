@@ -1,5 +1,7 @@
 <script>
-  export let name = "again";
+  export let first_name;
+  export let last_name;
+  $: name = `${first_name}  ${last_name}`;
 </script>
 
 <style>
@@ -10,4 +12,4 @@
   }
 </style>
 
-<h2>Hello Vikas {name}</h2>
+<h2>Hello {name}</h2>
