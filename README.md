@@ -98,3 +98,7 @@ copy of svelte tutorials
 
 [1.svelte](https://www.youtube.com/watch?v=Bfi96LUebXo)
 
+#svelte tutorial svelte_todo_app branch
+
+[2. svelte todo app](https://www.youtube.com/watch?v=jmXvpJxwFyc&t=31s)
+
