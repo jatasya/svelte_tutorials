@@ -102,3 +102,6 @@ copy of svelte tutorials
 
 [2. svelte todo app](https://www.youtube.com/watch?v=jmXvpJxwFyc&t=31s)
 
+#svelte tutorial svelte_udemy_Maximilian
+
+[2. svelte_udemy_Maximilian](https://udemy.com/course/sveltejs-the-complete-guide)

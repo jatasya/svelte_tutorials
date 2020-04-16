@@ -1,5 +1,5 @@
 <script>
-	import Todos from './Todos.svelte'
+  let name = "Vikas";
 </script>
 
-<Todos />
+<h2>Hello {name}</h2>
