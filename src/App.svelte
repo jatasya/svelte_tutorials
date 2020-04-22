@@ -1,5 +1,5 @@
 <script>
-  let name = "Vikas";
+  import Header from "./UI/Header.svelte";
 </script>
 
-<h2>Hello {name}</h2>
+<Header />
