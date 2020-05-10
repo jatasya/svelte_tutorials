@@ -1,109 +1,77 @@
 <script>
-  import Header from "./UI/Header.svelte";
-  import MeetupGrid from "./Meetups/MeetupGrid.svelte";
-  import TextInput from "./UI/TextInput.svelte";
-  import Button from "./UI/Button.svelte";
+  import { tick, afterUpdate } from "svelte";
+  import Product from "./Product.svelte";
+  import Modal from "./Modal.svelte";
 
-  let title = "";
-  let subtitle = "";
-  let address = "";
-  let email = "";
-  let description = "";
-  let imageUrl = "";
-
-  let meetups = [
+  let products = [
     {
-      id: "m1",
-      title: "Coding Bootcamp",
-      subtitle: "Learn to code in 2 hours",
-      description:
-        "In this meetup, we will have some experts that teach you how to code!",
-      imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Caffe_Nero_coffee_bar%2C_High_St%2C_Sutton%2C_Surrey%2C_Greater_London.JPG/800px-Caffe_Nero_coffee_bar%2C_High_St%2C_Sutton%2C_Surrey%2C_Greater_London.JPG",
-      address: "27th Nerd Road, 32523 New York",
-      contactEmail: "code@test.com"
+      id: "p1",
+      title: "A book",
+      price: 9.99,
     },
-    {
-      id: "m2",
-      title: "Swim Together",
-      subtitle: "Let's go for some swimming",
-      description: "We will simply swim some rounds!",
-      imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Olympic_swimming_pool_%28Tbilisi%29.jpg/800px-Olympic_swimming_pool_%28Tbilisi%29.jpg",
-      address: "27th Nerd Road, 32523 New York",
-      contactEmail: "swim@test.com"
-    }
   ];
 
-  function addMeetup() {
-    const newMeetup = {
-      id: Math.random().toString(),
-      title: title,
-      subtitle: subtitle,
-      description: description,
-      imageUrl: imageUrl,
-      contactEmail: email,
-      address: address
-    };
+  let text = "This is some dummy text!";
 
-    // meetups.push(newMeetup); // DOES NOT WORK!
-    meetups = [newMeetup, ...meetups];
+  let showModal = false;
+  let closeable = false;
+
+  function addToCart(event) {
+    console.log(event);
   }
+
+  function deleteProduct(event) {
+    console.log(event.detail);
+  }
+
+  function transform(event) {
+    if (event.which !== 9) {
+      return;
+    }
+    event.preventDefault();
+
+    const selectionStart = event.target.selectionStart;
+    const selectionEnd = event.target.selectionEnd;
+    const value = event.target.value;
+
+    text =
+      value.slice(0, selectionStart) +
+      value.slice(selectionStart, selectionEnd).toUpperCase() +
+      value.slice(selectionEnd);
+
+    tick().then(() => {
+      event.target.selectionStart = selectionStart;
+      event.target.selectionEnd = selectionEnd;
+    });
+
+    // Will not work!
+    //   event.target.selectionStart = selectionStart;
+    //   event.target.selectionEnd = selectionEnd;
+  }
+
+  afterUpdate(() => {});
 </script>
 
-<style>
-  main {
-    margin-top: 5rem;
-  }
+{#each products as product}
+  <Product {...product} on:add-to-cart={addToCart} on:delete={deleteProduct} />
+{/each}
 
-  form {
-    width: 30rem;
-    max-width: 90%;
-    margin: auto;
-  }
-</style>
+<button on:click={() => (showModal = true)}>Show Modal</button>
 
-<Header />
+{#if showModal}
+  <Modal
+    on:cancel={() => (showModal = false)}
+    on:close={() => (showModal = false)}
+    let:didAgree={closeable}>
+    <h1 slot="header">Hello!</h1>
+    <p>This works!</p>
+    <button
+      slot="footer"
+      on:click={() => (showModal = false)}
+      disabled={!closeable}>
+      Confirm
+    </button>
+  </Modal>
+{/if}
 
-<main>
-  <form on:submit|preventDefault={addMeetup}>
-    <TextInput
-      id="title"
-      label="Title"
-      type="text"
-      value={title}
-      on:input={event => (title = event.target.value)} />
-    <TextInput
-      id="subtitle"
-      label="Subtitle"
-      type="text"
-      value={subtitle}
-      on:input={event => (subtitle = event.target.value)} />
-    <TextInput
-      id="address"
-      label="Address"
-      type="text"
-      value={address}
-      on:input={event => (address = event.target.value)} />
-    <TextInput
-      id="imageUrl"
-      label="Image URL"
-      type="text"
-      value={imageUrl}
-      on:input={event => (imageUrl = event.target.value)} />
-    <TextInput
-      id="email"
-      label="E-Mail"
-      type="email"
-      value={email}
-      on:input={event => (email = event.target.value)} />
-    <TextInput
-      id="description"
-      label="Description"
-      controlType="textarea"
-      value={description}
-      on:input={event => (description = event.target.value)} />
-    <Button type="submit" caption="Save" />
-  </form>
-  <MeetupGrid {meetups} />
-</main>
+<textarea rows="5" value={text} on:keydown={transform} />
